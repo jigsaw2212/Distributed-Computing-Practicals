@@ -2,19 +2,20 @@
 #include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <string.h>
 
-#define MAX_BUF 1024
+#define MAX 100
 
 int main()
 {
     int fd;
     char * myfifo = "/tmp/myfifo";
-    char buf[MAX_BUF];
+    char str[MAX];
 
     /* open, read, and display the message from the FIFO */
     fd = open(myfifo, O_RDONLY);
-    read(fd, buf, MAX_BUF);
-    printf("Received: %s\n", buf);
+    read(fd, str, MAX);
+    printf("Received: %s\n", str);
     close(fd);
 
     return 0;
